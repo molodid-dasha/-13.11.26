@@ -1,0 +1,12 @@
+sku,name,description,price,currency,category_name,stock,image_url,is_active,brand,warranty_months,model_number
+1001,Ноутбук Lenovo IdeaPad 3,Бюджетный ноутбук для работы и учебы,45990,RUB,Компьютеры,5,https://avatars.mds.yandex.net/get-mpic/12523390/2a00000195a1c40283c31743cc49ffea00bf/orig,true,Lenovo,24,IdeaPad 3-15
+1002,Мышь Logitech M185,Беспроводная мышь с USB-приемником,1290,RUB,Периферия,10,https://3logic.ru/pimg/pim/regular/1074475.jpg,true,Logitech,12,M185
+1003,Клавиатура A4Tech Bloody V3M,Механическая игровая клавиатура,3490,RUB,Периферия,7,https://andpro.ru/upload/iblock/3e9/zepi0fyf3eis0yaosavksevll6lpnq2a/1d291b72_da02_11ee_8148_001e67d1aaea_adc4620d_020c_11ef_8148_001e67d1aaea.jpg,false,A4Tech,24,V3M
+1004,Монитор Dell S2722QC,Игровой монитор 27 дюймов,29990,RUB,Компьютеры,3,https://avatars.mds.yandex.net/get-mpic/5256693/img_id6247420369359498494.png/orig,true,Dell,24,S2722QC
+1005,Видеокарта NVIDIA GeForce RTX 3060,Графическая карта для игр и работы,24990,RUB,Компьютеры,4,https://www.regard.ru/api/site/cacheimg/goods/6332588/1200,true,NVIDIA,36,RTX3060
+1006,Накопитель SSD Samsung 870 EVO 1TB,Внутренний твердотельный накопитель,5990,RUB,Компьютеры,12,https://i-teh.com/upload/iblock/9d1/wpznmjel3lpj8dc5ded780o6z0lsz2pw.jpg,true,Samsung,60,870EVO-1T
+1007,Webcam Logitech C920,Веб-камера Full HD,4990,RUB,Периферия,6,https://images.unsplash.com/photo-1587826080689-853c3d20e166?q=80&w=600&auto=format&fit=crop,true,Logitech,24,C920
+1008,Аудиоинтерфейс Focusrite Scarlett 2i2,Для записи звука и подкастов,15990,RUB,Звук,2,https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?q=80&w=600&auto=format&fit=crop,false,Focusrite,60,Scarlett2i2
+1009,Роутер TP-Link Archer AX55,Беспроводной роутер Wi-Fi 6,7490,RUB,Сетевое оборудование,8,https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?q=80&w=600&auto=format&fit=crop,true,TP-Link,36,AX55
+1010,Игровая гарнитура Logitech G435,Беспроводные наушники с микрофоном,3290,RUB,Периферия,15,https://images.unsplash.com/photo-1618366712010-f4ae9c647dcb?q=80&w=600&auto=format&fit=crop,true,Logitech,12,G435
+1011,Блок питания Corsair CV550,,4990,RUB,Компьютеры,9,https://images.unsplash.com/photo-1587202372775-e229f172b9d7?q=80&w=600&auto=format&fit=crop,true,Corsair,60,CV550

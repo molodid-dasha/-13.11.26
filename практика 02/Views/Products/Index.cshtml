@@ -1,0 +1,106 @@
+﻿@model ProductsIndexViewModel
+@{
+    ViewData["Title"] = "Список товаров";
+    Layout = "_Layout";
+}
+
+<div class="filters-panel">
+    <div class="stats-bar">
+        <span>Всего товаров: <b>@Model.TotalCount</b></span>
+        <span>Общая стоимость: <b>@Model.TotalValue.ToString("N0") RUB</b></span>
+    </div>
+
+    <form method="get" asp-action="Index" class="filter-form">
+        <div class="filter-group">
+            <label>Поиск по названию</label>
+            <input type="text" name="searchString" value="@Model.SearchString" placeholder="Введите название..." />
+        </div>
+        <div class="filter-group">
+            <label>Категория</label>
+            <select name="category">
+                <option value="Все категории">Все категории</option>
+                @foreach (var cat in Model.Categories)
+                {
+                    if (cat == Model.SelectedCategory)
+                    {
+                        <option value="@cat" selected>@cat</option>
+                    }
+                    else
+                    {
+                        <option value="@cat">@cat</option>
+                    }
+                }
+            </select>
+        </div>
+        <div class="filter-group">
+            <label>Сортировка</label>
+            <select name="sortOrder">
+                <option value="">По артикулу (по умолч.)</option>
+                <option value="price_asc" selected="@(Model.SortOrder == "price_asc")">По цене (сначала дешевые)</option>
+                <option value="price_desc" selected="@(Model.SortOrder == "price_desc")">По цене (сначала дорогие)</option>
+                <option value="name" selected="@(Model.SortOrder == "name")">По названию (А-Я)</option>
+            </select>
+        </div>
+        <button type="submit" class="btn-apply">Применить</button>
+    </form>
+</div>
+
+@if (Model.Products.Count == 0)
+{
+    <div class="alert">
+        Товары не найдены или ещё не импортированы.
+        <br /><br />
+        <a asp-action="Import" class="btn">Перейти к импорту</a>
+    </div>
+}
+else
+{
+    <div class="products-grid">
+        @foreach (var p in Model.Products)
+        {
+            <div class="product-card">
+                <div class="product-img-wrapper">
+                    @if (!string.IsNullOrEmpty(p.ImageUrl))
+                    {
+                        <img src="@p.ImageUrl" alt="@p.Name" class="product-img"
+                             onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'300\' height=\'220\'><rect width=\'100%\' height=\'100%\' fill=\'%23e8f5e9\'/><text x=\'50%\' y=\'50%\' font-family=\'Arial\' font-size=\'16\' fill=\'%2366bb6a\' dominant-baseline=\'middle\' text-anchor=\'middle\'>Нет фото</text></svg>';" />
+                    }
+                    else
+                    {
+                        <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='220'><rect width='100%' height='100%' fill='%23e8f5e9'/><text x='50%' y='50%' font-family='Arial' font-size='16' fill='%2366bb6a' dominant-baseline='middle' text-anchor='middle'>Нет фото</text></svg>" alt="@p.Name" class="product-img" />
+                    }
+                </div>
+
+                <div class="product-info">
+                    <h3 class="product-title">@p.Name</h3>
+                    <div class="product-category">@p.CategoryName</div>
+
+                    <div class="product-desc">
+                        @(string.IsNullOrEmpty(p.Description) ? "Описание отсутствует." : p.Description)
+                    </div>
+
+                    <div class="product-meta">
+                        <span>Бренд:</span> <b>@p.Brand</b> <br />
+                        <span>Модель:</span> <b>@p.ModelNumber</b> <br />
+                        <span>Гарантия:</span> <b>@p.WarrantyMonths мес.</b>
+                    </div>
+
+                    <div class="product-bottom">
+                        <div class="product-price">@p.Price.ToString("N0") ₽</div>
+                        <div class="product-stock @(p.IsActive ? "" : "out")">
+                            @(p.IsActive ? $"В наличии: {p.StockQuantity} шт." : "Неактивен")
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    <br />
+    <div style="display: flex; gap: 15px; margin-top: 20px; justify-content: center;">
+        <a asp-action="Import" class="btn">Импортировать ещё</a>
+        <form method="post" asp-action="Clear" style="display:inline">
+            @Html.AntiForgeryToken()
+            <button type="submit" class="btn btn-secondary">Очистить всё</button>
+        </form>
+    </div>
+}
